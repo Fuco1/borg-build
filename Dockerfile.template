@@ -1,0 +1,10 @@
+FROM python:3
+
+RUN apt-get update && apt-get install -y \
+    libacl1-dev \
+    liblz4-dev \
+    libssl-dev \
+    && rm -rf /var/lib/apt/lists/* \
+    && pip3 install "borgbackup=={{VERSION}}"
+
+ENTRYPOINT ["/usr/local/bin/borg"]

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+VERSION=$(cat VERSION)
+
+sed -e "s/{{VERSION}}/$VERSION/" Dockerfile.template > Dockerfile
+
+docker build -f Dockerfile -t "fuco1/borg:$VERSION" .

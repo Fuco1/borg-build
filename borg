@@ -1,0 +1,12 @@
+#!/bin/bash
+
+__DIR__=$(dirname $(readlink -f "$0"))
+VERSION=$(cat "${__DIR__}/VERSION")
+
+docker run --rm \
+       --hostname $(hostname) \
+       -e BORG_PASSPHRASE=$($BORG_PASSCOMMAND) \
+       -v "$PWD:$PWD" \
+       -w "$PWD" \
+       -v "/media/data-750/borg:/media/data-750/borg" \
+       "fuco1/borg:$VERSION" "$@"

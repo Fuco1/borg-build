@@ -1,0 +1,6 @@
+#!/bin/bash
+
+__DIR__=$(dirname $(readlink -f "$0"))
+
+mkdir -p ~/.local/bin
+[[ ! -s ~/.local/bin/borg ]] && ln -s ${__DIR__}/borg ~/.local/bin/borg
